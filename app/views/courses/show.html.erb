@@ -1,9 +1,27 @@
-<h1>Course #<%= @course.id %></h1>
+<h2>Course #<%= @course.id %></h2>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">  
+         Students Enrolled in: <%= @course.name %>
+      </h3>
+    </div>  
+    <div class="panel-body">
+      <% @course.enrollments.each do |enrollment| %>
+      <a href="#" class="list-group-item ">
+        <h4 class="list-group-item-heading"><%= enrollment.student.try(:name) %></h4>  
+      </a>
+      <% end %>
+    </div>
+  </div>
+<p />
+<a href="/courses/<%= @course.id %>/edit"> &nbsp; Edit </a> |
+<a href="/courses/<%= @course.id %>/destroy"> &nbsp; Destroy</a>
 
-<div class="row">
+<!-- <div class="row">
   <div class="col-md-8 col-md-offset-2">
-</div>
-<!-- 
+</div> -->
+
+  <!-- 
   <strong>Name</strong>:<br />
   <p><%= @course.name %></p>
 
@@ -13,18 +31,12 @@
   <li> <%= enrollment.student.name %></li>
   <% end %>
 </div> -->
-<p />
-        
-    <div class="list-group">
-      <strong> Students Enrolled in: <%= @course.name %></strong><br />
-      <p><% @course.enrollments.each do |enrollment| %></p>
 
-      <a href="#" class="list-group-item ">
-        <h4 class="list-group-item-heading"><%= enrollment.student.try(:name) %></h4>  
-      </a>
-      <% end %>
-    </div>
-  </div>
-<p />
-<a href="/courses/<%= @course.id %>/edit">Edit</a> |
-<a href="/courses/<%= @course.id %>/destroy">Destroy</a>
+
+<!--   <div class="panel panel-primary">...</div>
+<div class="panel panel-primary">...</div>
+<div class="panel panel-success">...</div>
+<div class="panel panel-info">...</div>
+<div class="panel panel-warning">...</div>
+<div class="panel panel-danger">...</div> 
+ -->
